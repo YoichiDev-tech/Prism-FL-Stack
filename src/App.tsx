@@ -7,6 +7,7 @@ import ToolDetail from "./pages/ToolDetail";
 import SubmitTool from "./pages/SubmitTool";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+import Stack from "./pages/Stack";
 
 // Top-level layout: a fixed Navbar and Footer wrap all routed pages.
 // This keeps the shell consistent across the whole app.
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/submit" element={<SubmitTool />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/stack" element={<Stack />} />
         </Routes>
       </main>
       <Footer />

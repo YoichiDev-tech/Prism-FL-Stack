@@ -29,6 +29,9 @@ export default function Navbar() {
           <NavLink to="/admin" className={linkClasses}>
             Admin
           </NavLink>
+          <NavLink to="/stack" className={linkClasses}>
+            My Stack
+          </NavLink>
         </nav>
       </div>
     </header>

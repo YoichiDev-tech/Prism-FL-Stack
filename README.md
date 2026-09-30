@@ -1,74 +1,91 @@
-# IndieMakerStack (v1)
+# PrismStack
 
-A clean, unbranded directory of tools and resources for indie makers,
-founders, and solopreneurs.
+PrismStack is a fast, minimal, and intentionally opinionated tool directory
+built for founders, indie makers, and engineers who want a clean way to discover,
+organize and share the tools they rely on.
 
-## Tech stack
+Version 2 introduces the feature that turns PrismStack from a simple directory
+into a real product: Stacks.
+A stack is your personal collection of tools, saved locally, easy to revisit
+and designed to evolve with your workflow.
 
-- React + TypeScript + Vite
-- Tailwind CSS
-- Supabase (Postgres database + client library)
-- React Router
+## What PrismStack Is
 
-## Folder structure
+PrismStack is a lightweight web application built with React, TypeScript, Vite, Supabase
+and Tailwind CSS.
+The goal is clarity, speed, and a frictionless user experience. No clutter, no noise.
+Just tools and the ability to build your own stack.
 
+## Core Features (v2)
+
+### Tool Directory
+A clean, searchable list of tools with categories, descriptions, and detail pages.
+
+### Smart Filtering
+Search by name or description, filter by category, or browse everything at once.
+
+### My Stack (new in v2)
+The defining feature of PrismStack:
+- Add any tool to your personal stack
+- Remove tools or clear the stack entirely
+- Persistent storage via localStorage
+- Dedicated /stack page to view and manage your selections
+
+Your stack stays with you, even after closing the browser.
+
+### Clean UI Components
+Reusable cards, badges, dropdowns, and layout components designed for clarity and speed.
+
+## How Stacks Work
+
+Stacks are powered by a small global context:
+- Stores an array of selected tools
+- Provides addToStack, removeFromStack, and clearStack
+- Syncs automatically with localStorage
+- Accessible from anywhere in the app
+
+The implementation is simple, predictable, and easy to extend.
+
+## Local Development
+
+Install dependencies:
 ```
-src/
-  components/   Reusable UI pieces (Navbar, Footer, ToolCard, etc.)
-  pages/        Route-level views (Home, Categories, ToolDetail, etc.)
-  lib/          Supabase client setup
-  hooks/        Data-fetching hooks (useTools, useCategories)
-  styles/       Global CSS (Tailwind entry point)
-  types/        Shared TypeScript types
-  utils/        Pure helper functions (search/filter logic)
-supabase/
-  schema.sql    Table definitions and RLS policies
-  seed.sql      Initial categories + 20 sample tools
-```
-
-## 1. Set up Supabase
-
-1. Create a free project at https://supabase.com.
-2. Open the SQL editor in your project and run `supabase/schema.sql`.
-3. Then run `supabase/seed.sql` to load starter categories and tools.
-4. In Project Settings → API, copy your Project URL and anon public key.
-
-## 2. Configure environment variables
-
-Copy the example env file and fill in your Supabase values:
-
-```bash
-cp .env.example .env
-```
-
-```
-VITE_SUPABASE_URL=https://YOUR_PROJECT_REF.supabase.co
-VITE_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
-```
-
-## 3. Install and run
-
-```bash
 npm install
+```
+
+Run the development server:
+```
 npm run dev
 ```
 
-The app runs at http://localhost:5173.
-
-## 4. Build for production
-
-```bash
+Build for production:
+```
 npm run build
-npm run preview
 ```
 
-## Notes on v1 scope
+Lint:
+```
+npm run lint
+```
 
-- No authentication: the Submit and Admin pages are open to anyone with
-  the URL. Row Level Security policies in `schema.sql` currently allow
-  public insert/delete on the `tools` table to match this. Tighten these
-  policies (and add auth) before using this in a real, public deployment.
-- Categories are managed directly in the database for v1; there is no
-  UI to create or edit them.
-- The data model is intentionally small (`Tool` and `Category`) so it's
-  easy to extend — for example, adding tags, upvotes, or images later.
+## Roadmap
+
+Version 2 establishes the foundation for everything that comes next.
+
+### v2.1 — Stack Presets
+Prebuilt stacks for founders, agencies, AI startups, and indie makers.
+
+### v2.2 — Stack Export
+Share your stack as JSON or a public link.
+
+### v3 — AI-Assisted Stack Builder
+Generate or refine your stack based on your goals.
+
+## Author
+
+Built by Yoichi — frontend developer and product builder who prefers tools that 
+stay out of the way and let you work.
+
+## License
+
+MIT License.
