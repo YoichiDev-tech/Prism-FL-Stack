@@ -38,11 +38,11 @@ export default function PresetDetailPage() {
         <h1 className="text-3xl font-bold text-gray-900">{preset.name}</h1>
         <p className="mt-2 text-lg text-gray-600">{preset.description}</p>
 
-        <div className="mt-6 flex items-center gap-4">
+        <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4">
           {!allToolsInStack ? (
             <button
               onClick={handleAddAll}
-              className="rounded-lg bg-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+              className="w-full rounded-lg bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700 sm:w-auto"
             >
               Add All {presetTools.length} Tools to Stack
             </button>

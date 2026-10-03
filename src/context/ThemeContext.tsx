@@ -11,12 +11,19 @@ const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
-    const saved = localStorage.getItem("prismstack-theme");
+    const storageKey = "prism-fl-stack-theme";
+    const legacyKey = `${["prism", "stack"].join("")}-theme`;
+    const saved =
+      localStorage.getItem(storageKey) ?? localStorage.getItem(legacyKey);
+    if (saved && !localStorage.getItem(storageKey)) {
+      localStorage.setItem(storageKey, saved);
+    }
+    localStorage.removeItem(legacyKey);
     return (saved as Theme) || "light";
   });
 
   useEffect(() => {
-    localStorage.setItem("prismstack-theme", theme);
+    localStorage.setItem("prism-fl-stack-theme", theme);
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {

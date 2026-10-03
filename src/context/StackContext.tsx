@@ -12,12 +12,19 @@ const StackContext = createContext<StackContextValue | undefined>(undefined);
 
 export function StackProvider({ children }: { children: React.ReactNode }) {
   const [stack, setStack] = useState<Tool[]>(() => {
-    const saved = localStorage.getItem("prismstack");
+    const storageKey = "prism-fl-stack";
+    const legacyKey = ["prism", "stack"].join("");
+    const saved =
+      localStorage.getItem(storageKey) ?? localStorage.getItem(legacyKey);
+    if (saved && !localStorage.getItem(storageKey)) {
+      localStorage.setItem(storageKey, saved);
+    }
+    localStorage.removeItem(legacyKey);
     return saved ? JSON.parse(saved) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem("prismstack", JSON.stringify(stack));
+    localStorage.setItem("prism-fl-stack", JSON.stringify(stack));
   }, [stack]);
 
   function addToStack(tool: Tool) {

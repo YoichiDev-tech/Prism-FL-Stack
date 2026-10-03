@@ -1,17 +1,17 @@
-# PrismStack
+# Prism FL Stack
 
-PrismStack is a fast, minimal, and intentionally opinionated tool directory
+Prism FL Stack is a fast, minimal, and intentionally opinionated tool directory
 built for founders, indie makers, and engineers who want a clean way to discover,
 organize and share the tools they rely on.
 
-Version 2 introduces the feature that turns PrismStack from a simple directory
+Version 2 introduces the feature that turns Prism FL Stack from a simple directory
 into a real product: Stacks.
 A stack is your personal collection of tools, saved locally, easy to revisit
 and designed to evolve with your workflow.
 
-## What PrismStack Is
+## What Prism FL Stack Is
 
-PrismStack is a lightweight web application built with React, TypeScript, Vite, Supabase
+Prism FL Stack is a lightweight web application built with React, TypeScript, Vite, Supabase
 and Tailwind CSS.
 The goal is clarity, speed, and a frictionless user experience. No clutter, no noise.
 Just tools and the ability to build your own stack.
@@ -25,7 +25,7 @@ A clean, searchable list of tools with categories, descriptions, and detail page
 Search by name or description, filter by category, or browse everything at once.
 
 ### My Stack (new in v2)
-The defining feature of PrismStack:
+The defining feature of Prism FL Stack:
 - Add any tool to your personal stack
 - Remove tools or clear the stack entirely
 - Persistent storage via localStorage

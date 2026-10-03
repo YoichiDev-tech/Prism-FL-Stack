@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import { Logo } from "./Logo";
 import { useTheme } from "../context/ThemeContext";
 
@@ -9,17 +10,58 @@ const linkClasses = ({ isActive }: { isActive: boolean }) =>
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-30 border-b border-ink/10 bg-paper/80 backdrop-blur-md">
-      <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-4">
+      <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-y-3 px-4 py-4">
         <NavLink to="/" className="flex items-center gap-2.5">
           <Logo />
           <span className="font-display text-base font-semibold tracking-tight text-ink">
-            PrismStack
+            Prism FL Stack
           </span>
         </NavLink>
-        <nav className="flex items-center gap-6">
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="rounded-lg p-2 text-ink/50 transition-colors hover:text-ink"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? (
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            ) : (
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            className="rounded-lg p-2 text-ink/70 transition-colors hover:bg-ink/5 hover:text-ink xl:hidden"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
+          >
+            {menuOpen ? (
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+        <nav
+          id="primary-navigation"
+          onClick={() => setMenuOpen(false)}
+          className={`${menuOpen ? "grid" : "hidden"} basis-full grid-cols-2 gap-x-4 gap-y-3 border-t border-ink/10 pt-3 sm:grid-cols-3 xl:flex xl:basis-auto xl:items-center xl:gap-4 xl:border-0 xl:pt-0`}
+        >
           <NavLink to="/tools" end className={linkClasses}>
             Tools
           </NavLink>
@@ -47,21 +89,6 @@ export default function Navbar() {
           <NavLink to="/admin" className={linkClasses}>
             Admin
           </NavLink>
-          <button
-            onClick={toggleTheme}
-            className="rounded-lg p-2 text-ink/50 hover:text-ink transition-colors"
-            aria-label="Toggle theme"
-          >
-            {theme === "light" ? (
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-              </svg>
-            ) : (
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-            )}
-          </button>
         </nav>
       </div>
     </header>

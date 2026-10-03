@@ -15,4 +15,9 @@ if (!supabaseUrl || !supabaseAnonKey) {
 }
 
 // Single shared Supabase client used across the app.
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Fall back to placeholder values so a missing env var cannot crash the whole app
+// at import time (createClient throws on an empty URL, which causes a blank page).
+export const supabase = createClient(
+  supabaseUrl || "https://placeholder.supabase.co",
+  supabaseAnonKey || "placeholder-anon-key"
+);

@@ -1,8 +1,8 @@
 export default function FAQ() {
   const faqs = [
     {
-      question: "What is PrismStack?",
-      answer: "PrismStack is a curated directory of tools and resources for founders, indie makers, and developers. It helps you discover, organize, and share the tools you use to build products."
+      question: "What is Prism FL Stack?",
+      answer: "Prism FL Stack is a curated directory of tools and resources for founders, indie makers, and developers. It helps you discover, organize, and share the tools you use to build products."
     },
     {
       question: "How do I add tools to my stack?",
@@ -21,8 +21,8 @@ export default function FAQ() {
       answer: "Click the 'Submit' link in the navigation and fill out the form with the tool's name, category, description, and link. Submitted tools are reviewed before being added to the directory."
     },
     {
-      question: "Is PrismStack free?",
-      answer: "Yes, PrismStack is completely free to use. We believe in providing value to the community without barriers."
+      question: "Is Prism FL Stack free?",
+      answer: "Yes, Prism FL Stack is completely free to use. We believe in providing value to the community without barriers."
     },
     {
       question: "How are tools curated?",
@@ -46,7 +46,7 @@ export default function FAQ() {
     <div>
       <h1 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h1>
       <p className="mt-4 text-lg text-gray-600">
-        Everything you need to know about PrismStack.
+        Everything you need to know about Prism FL Stack.
       </p>
 
       <div className="mt-12 space-y-4">
@@ -81,16 +81,16 @@ export default function FAQ() {
         <p className="mt-2 text-gray-600">
           Can't find the answer you're looking for? Feel free to reach out or submit a new tool suggestion.
         </p>
-        <div className="mt-4 flex gap-4">
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:gap-4">
           <a
             href="/submit"
-            className="inline-block rounded-lg bg-blue-600 px-4 py-2 text-white font-medium hover:bg-blue-700 transition-colors"
+            className="inline-block rounded-lg bg-blue-600 px-4 py-2 text-center font-medium text-white transition-colors hover:bg-blue-700"
           >
             Submit a Tool
           </a>
           <a
             href="/about"
-            className="inline-block rounded-lg border border-gray-300 px-4 py-2 text-gray-700 font-medium hover:border-gray-400 hover:bg-gray-50 transition-colors"
+            className="inline-block rounded-lg border border-gray-300 px-4 py-2 text-center font-medium text-gray-700 transition-colors hover:border-gray-400 hover:bg-gray-50"
           >
             Contact Us
           </a>

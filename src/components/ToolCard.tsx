@@ -48,7 +48,7 @@ export default function ToolCard({ tool }: ToolCardProps) {
           </span>
         ))}
       </div>
-      <div className="mt-3 flex items-center justify-between">
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-x-2 gap-y-3">
         <div className="flex items-center gap-3 text-xs text-gray-500">
           <span className="rounded-full bg-gray-100 px-2 py-0.5">{tool.category}</span>
           {tool.likes && (
@@ -62,7 +62,7 @@ export default function ToolCard({ tool }: ToolCardProps) {
             e.preventDefault();
             addToStack(tool);
           }}
-          className="rounded-md border border-gray-300 px-2 py-1 text-xs text-gray-700 hover:border-gray-500 hover:bg-gray-50 transition-colors"
+          className="shrink-0 rounded-md border border-gray-300 px-2 py-1 text-xs text-gray-700 transition-colors hover:border-gray-500 hover:bg-gray-50"
         >
           Add to Stack
         </button>

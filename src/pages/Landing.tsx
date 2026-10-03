@@ -37,7 +37,7 @@ export default function Landing() {
       <section className="py-16 bg-gray-50">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-3xl font-bold text-gray-900 text-center">
-            Why PrismStack?
+            Why Prism FL Stack?
           </h2>
           <p className="mt-4 text-center text-gray-600">
             Everything you need to discover, organize, and share your tools.

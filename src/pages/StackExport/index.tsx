@@ -5,13 +5,13 @@ export default function Index() {
 
   const downloadJSON = () => {
     const data = JSON.stringify(stack, null, 2);
-    const blob = new Blob([data], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
+    const blob = new window.Blob([data], { type: "application/json" });
+    const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "prismstack.json";
+    a.download = "prism-fl-stack.json";
     a.click();
-    URL.revokeObjectURL(url);
+    window.URL.revokeObjectURL(url);
   };
 
   const downloadMarkdown = () => {
@@ -23,13 +23,13 @@ export default function Index() {
       if (tool.pricing) markdown += `- Pricing: ${tool.pricing}\n`;
       markdown += `- Link: ${tool.link}\n\n`;
     });
-    const blob = new Blob([markdown], { type: "text/markdown" });
-    const url = URL.createObjectURL(blob);
+    const blob = new window.Blob([markdown], { type: "text/markdown" });
+    const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "prismstack.md";
+    a.download = "prism-fl-stack.md";
     a.click();
-    URL.revokeObjectURL(url);
+    window.URL.revokeObjectURL(url);
   };
 
   const downloadCSV = () => {
@@ -37,13 +37,13 @@ export default function Index() {
     stack.forEach((tool) => {
       csv += `"${tool.name}","${tool.category}","${tool.description}","${tool.link}","${tool.pricing || ''}"\n`;
     });
-    const blob = new Blob([csv], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
+    const blob = new window.Blob([csv], { type: "text/csv" });
+    const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "prismstack.csv";
+    a.download = "prism-fl-stack.csv";
     a.click();
-    URL.revokeObjectURL(url);
+    window.URL.revokeObjectURL(url);
   };
 
   if (stack.length === 0) {

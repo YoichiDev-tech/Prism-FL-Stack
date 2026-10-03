@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <div>
-      <h1 className="text-3xl font-bold text-gray-900">About PrismStack</h1>
+      <h1 className="text-3xl font-bold text-gray-900">About Prism FL Stack</h1>
       <p className="mt-4 text-lg text-gray-600">
         Your curated directory for discovering, organizing, and sharing the best tools for building products.
       </p>
@@ -10,7 +10,7 @@ export default function About() {
         <section>
           <h2 className="text-2xl font-semibold text-gray-900">Our Mission</h2>
           <p className="mt-4 text-gray-600 leading-relaxed">
-            PrismStack was built with a simple goal: to help founders, indie makers, and developers discover the right tools for their projects. We believe that the right stack can make the difference between shipping quickly and getting stuck in tool paralysis.
+            Prism FL Stack was built with a simple goal: to help founders, indie makers, and developers discover the right tools for their projects. We believe that the right stack can make the difference between shipping quickly and getting stuck in tool paralysis.
           </p>
           <p className="mt-4 text-gray-600 leading-relaxed">
             We curate tools across AI, backend, hosting, design, productivity, and more—focusing on quality over quantity. Every tool in our directory is selected for its usefulness, reliability, and community adoption.
@@ -50,14 +50,14 @@ export default function About() {
         <section>
           <h2 className="text-2xl font-semibold text-gray-900">The Team</h2>
           <p className="mt-4 text-gray-600 leading-relaxed">
-            PrismStack is built by Yoichi, a frontend developer and product builder who believes tools should stay out of the way and let you work. The project is continuously evolving based on feedback from the community.
+            Prism FL Stack is built by Yoichi, a frontend developer and product builder who believes tools should stay out of the way and let you work. The project is continuously evolving based on feedback from the community.
           </p>
         </section>
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-900">Open Source</h2>
           <p className="mt-4 text-gray-600 leading-relaxed">
-            PrismStack is open source and built with modern web technologies. We welcome contributions, bug reports, and suggestions from the community.
+            Prism FL Stack is open source and built with modern web technologies. We welcome contributions, bug reports, and suggestions from the community.
           </p>
         </section>
 
