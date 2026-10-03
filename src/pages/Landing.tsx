@@ -86,9 +86,9 @@ export default function Landing() {
       {/* Trending Tools Section */}
       <section className="py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold text-gray-900">Trending Tools</h2>
-            <Link to="/tools" className="text-blue-600 hover:text-blue-700 font-medium">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">Trending Tools</h2>
+            <Link to="/tools" className="self-start whitespace-nowrap text-blue-600 hover:text-blue-700 font-medium sm:self-auto">
               View all →
             </Link>
           </div>
@@ -127,9 +127,9 @@ export default function Landing() {
       {/* New Tools Section */}
       <section className="py-16 bg-gray-50">
         <div className="mx-auto max-w-5xl px-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold text-gray-900">New Tools</h2>
-            <Link to="/tools" className="text-blue-600 hover:text-blue-700 font-medium">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">New Tools</h2>
+            <Link to="/tools" className="self-start whitespace-nowrap text-blue-600 hover:text-blue-700 font-medium sm:self-auto">
               View all →
             </Link>
           </div>
