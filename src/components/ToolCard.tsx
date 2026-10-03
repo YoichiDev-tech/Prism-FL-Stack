@@ -29,7 +29,7 @@ export default function ToolCard({ tool }: ToolCardProps) {
       className="block rounded-xl border border-ink/8 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
     >
       <div className="flex items-start justify-between gap-2">
-        <h3 className="font-display text-base font-semibold text-ink">
+        <h3 className="min-w-0 break-words font-display text-base font-semibold text-ink">
           {tool.name}
         </h3>
         {tool.pricing && (
@@ -62,7 +62,7 @@ export default function ToolCard({ tool }: ToolCardProps) {
             e.preventDefault();
             addToStack(tool);
           }}
-          className="shrink-0 rounded-md border border-gray-300 px-2 py-1 text-xs text-gray-700 transition-colors hover:border-gray-500 hover:bg-gray-50"
+          className="min-h-11 min-w-11 shrink-0 rounded-md border border-gray-300 px-2 text-xs text-gray-700 transition-colors hover:border-gray-500 hover:bg-gray-50"
         >
           Add to Stack
         </button>

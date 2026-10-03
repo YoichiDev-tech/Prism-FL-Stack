@@ -16,6 +16,7 @@ export type Tool = {
   likes?: number;
   isNew?: boolean;
   isTrending?: boolean;
+  is_approved?: boolean;
 };
 
 export type NewTool = {

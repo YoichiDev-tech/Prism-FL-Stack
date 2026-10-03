@@ -1,17 +1,12 @@
 import { useStack } from "../../context/StackContext";
+import { downloadTextFile } from "../../utils/downloadTextFile";
 
 export default function Index() {
   const { stack } = useStack();
 
   const downloadJSON = () => {
     const data = JSON.stringify(stack, null, 2);
-    const blob = new window.Blob([data], { type: "application/json" });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "prism-fl-stack.json";
-    a.click();
-    window.URL.revokeObjectURL(url);
+    downloadTextFile("prism-fl-stack.json", data, "application/json;charset=utf-8");
   };
 
   const downloadMarkdown = () => {
@@ -23,27 +18,23 @@ export default function Index() {
       if (tool.pricing) markdown += `- Pricing: ${tool.pricing}\n`;
       markdown += `- Link: ${tool.link}\n\n`;
     });
-    const blob = new window.Blob([markdown], { type: "text/markdown" });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "prism-fl-stack.md";
-    a.click();
-    window.URL.revokeObjectURL(url);
+    downloadTextFile("prism-fl-stack.md", markdown, "text/markdown;charset=utf-8");
   };
 
   const downloadCSV = () => {
-    let csv = "Name,Category,Description,Link,Pricing\n";
-    stack.forEach((tool) => {
-      csv += `"${tool.name}","${tool.category}","${tool.description}","${tool.link}","${tool.pricing || ''}"\n`;
-    });
-    const blob = new window.Blob([csv], { type: "text/csv" });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "prism-fl-stack.csv";
-    a.click();
-    window.URL.revokeObjectURL(url);
+    const escapeField = (value: string) => `"${value.replace(/"/g, '""')}"`;
+    const rows = [
+      ["Name", "Category", "Description", "Link", "Pricing"],
+      ...stack.map((tool) => [
+        tool.name,
+        tool.category,
+        tool.description,
+        tool.link,
+        tool.pricing ?? "",
+      ]),
+    ];
+    const csv = rows.map((row) => row.map(escapeField).join(",")).join("\r\n");
+    downloadTextFile("prism-fl-stack.csv", csv, "text/csv;charset=utf-8");
   };
 
   if (stack.length === 0) {
@@ -69,6 +60,7 @@ export default function Index() {
 
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
         <button
+          type="button"
           onClick={downloadJSON}
           className="rounded-lg border border-gray-300 bg-white p-4 text-left hover:border-gray-500 hover:bg-gray-50 transition-colors"
         >
@@ -86,6 +78,7 @@ export default function Index() {
         </button>
 
         <button
+          type="button"
           onClick={downloadMarkdown}
           className="rounded-lg border border-gray-300 bg-white p-4 text-left hover:border-gray-500 hover:bg-gray-50 transition-colors"
         >
@@ -103,6 +96,7 @@ export default function Index() {
         </button>
 
         <button
+          type="button"
           onClick={downloadCSV}
           className="rounded-lg border border-gray-300 bg-white p-4 text-left hover:border-gray-500 hover:bg-gray-50 transition-colors"
         >

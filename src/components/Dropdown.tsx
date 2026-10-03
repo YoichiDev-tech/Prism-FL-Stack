@@ -57,7 +57,7 @@ export function Dropdown({
           className={`
             flex w-full items-center justify-between
             rounded-xl border bg-paper
-            py-2.5 pl-4 pr-3
+            min-h-11 py-2.5 pl-4 pr-3
             text-sm text-ink
             transition-all duration-150
             ${open
@@ -110,7 +110,7 @@ export function Dropdown({
                   setOpen(false);
                 }}
                 className={`
-                  mx-1.5 rounded-lg px-3 py-2
+                  mx-1.5 min-h-11 rounded-lg px-3 py-2
                   text-sm cursor-pointer
                   transition-colors duration-100
                   ${opt.value === value

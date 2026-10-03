@@ -42,8 +42,23 @@ body {
   background-image:
     radial-gradient(600px circle at 0% 0%, rgba(245, 166, 35, 0.06), transparent 60%),
     radial-gradient(600px circle at 100% 0%, rgba(124, 92, 255, 0.05), transparent 60%);
-  background-attachment: fixed;
   transition: color 150ms ease, background-color 150ms ease;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .dark body {

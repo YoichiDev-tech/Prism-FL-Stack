@@ -120,15 +120,17 @@ export default function ToolDetail() {
           <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
             {isInStack ? (
               <button
+                type="button"
                 onClick={() => removeFromStack(tool.id)}
-                className="rounded-lg border border-red-300 px-4 py-2 text-center text-sm font-medium text-red-600 transition-colors hover:border-red-500 hover:bg-red-50"
+                className="min-h-11 rounded-lg border border-red-300 px-4 py-2 text-center text-sm font-medium text-red-600 transition-colors hover:border-red-500 hover:bg-red-50"
               >
                 Remove from Stack
               </button>
             ) : (
               <button
+                type="button"
                 onClick={() => addToStack(tool)}
-                className="rounded-lg bg-blue-600 px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700"
+                className="min-h-11 rounded-lg bg-blue-600 px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700"
               >
                 Add to Stack
               </button>
@@ -137,7 +139,7 @@ export default function ToolDetail() {
               href={tool.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border border-gray-300 px-4 py-2 text-center text-sm font-medium text-gray-900 transition-colors hover:border-gray-500 hover:bg-gray-50"
+              className="min-h-11 rounded-lg border border-gray-300 px-4 py-2 text-center text-sm font-medium text-gray-900 transition-colors hover:border-gray-500 hover:bg-gray-50"
             >
               Visit Website →
             </a>

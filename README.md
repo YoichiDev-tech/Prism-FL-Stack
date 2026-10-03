@@ -1,91 +1,82 @@
 # Prism FL Stack
 
-Prism FL Stack is a fast, minimal, and intentionally opinionated tool directory
-built for founders, indie makers, and engineers who want a clean way to discover,
-organize and share the tools they rely on.
+The right tools should make building easier—not add noise.
 
-Version 2 introduces the feature that turns Prism FL Stack from a simple directory
-into a real product: Stacks.
-A stack is your personal collection of tools, saved locally, easy to revisit
-and designed to evolve with your workflow.
+Prism FL Stack is a curated directory for founders, indie makers, and developers. Find tools for your next project, save the ones you use, and export your stack when you need it.
 
-## What Prism FL Stack Is
+## What you can do
 
-Prism FL Stack is a lightweight web application built with React, TypeScript, Vite, Supabase
-and Tailwind CSS.
-The goal is clarity, speed, and a frictionless user experience. No clutter, no noise.
-Just tools and the ability to build your own stack.
+- **Discover tools:** Browse a searchable directory with categories, descriptions, and detail pages.
+- **Build your stack:** Save tools to a personal collection that stays in your browser between visits.
+- **Explore presets:** Start with a curated collection for a particular kind of work.
+- **Export your stack:** Download your collection as JSON, Markdown, or CSV.
+- **Suggest a tool:** Submit a tool for review. Approved submissions are added to the public directory.
 
-## Core Features (v2)
+Prism FL Stack is built with React, TypeScript, Vite, Tailwind CSS, and Supabase.
 
-### Tool Directory
-A clean, searchable list of tools with categories, descriptions, and detail pages.
+## Get started
 
-### Smart Filtering
-Search by name or description, filter by category, or browse everything at once.
+You’ll need Node.js and a Supabase project.
 
-### My Stack (new in v2)
-The defining feature of Prism FL Stack:
-- Add any tool to your personal stack
-- Remove tools or clear the stack entirely
-- Persistent storage via localStorage
-- Dedicated /stack page to view and manage your selections
+Install the dependencies and start the local development server:
 
-Your stack stays with you, even after closing the browser.
-
-### Clean UI Components
-Reusable cards, badges, dropdowns, and layout components designed for clarity and speed.
-
-## How Stacks Work
-
-Stacks are powered by a small global context:
-- Stores an array of selected tools
-- Provides addToStack, removeFromStack, and clearStack
-- Syncs automatically with localStorage
-- Accessible from anywhere in the app
-
-The implementation is simple, predictable, and easy to extend.
-
-## Local Development
-
-Install dependencies:
-```
+```sh
 npm install
-```
-
-Run the development server:
-```
 npm run dev
 ```
 
-Build for production:
-```
-npm run build
-```
+To check the production build and lint the code:
 
-Lint:
-```
+```sh
+npm run build
 npm run lint
 ```
 
-## Roadmap
+## Connect Supabase
 
-Version 2 establishes the foundation for everything that comes next.
+Add your Supabase project URL and public anon key to a local `.env` file:
 
-### v2.1 — Stack Presets
-Prebuilt stacks for founders, agencies, AI startups, and indie makers.
+```dotenv
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-public-anon-key
+```
 
-### v2.2 — Stack Export
-Share your stack as JSON or a public link.
+These are public client credentials. Never put a Supabase service-role key in the app or expose it in client-side environment variables.
 
-### v3 — AI-Assisted Stack Builder
-Generate or refine your stack based on your goals.
+For a new database, run the database schema in the Supabase SQL Editor, then run the seed data if you want to start with the example directory.
 
-## Author
+For an existing database, apply the included moderation migration in the Supabase SQL Editor. Existing tools remain published; new submissions are held for review.
 
-Built by Yoichi — frontend developer and product builder who prefers tools that 
-stay out of the way and let you work.
+## Review submissions
+
+The `/admin` page requires a Supabase Auth account with the trusted `app_metadata.role` set to `admin`. The database uses Row Level Security to enforce these permissions; hiding admin controls in the app is not the security boundary.
+
+1. Enable the Email provider in Supabase Auth and create your administrator account.
+2. In the Supabase SQL Editor, assign the admin role to that account. Replace the example email with the administrator’s email:
+
+   ```sql
+   update auth.users
+   set raw_app_meta_data =
+     coalesce(raw_app_meta_data, '{}'::jsonb) || '{"role":"admin"}'::jsonb
+   where email = 'admin@example.com';
+   ```
+
+3. Sign out and back in so the new role is included in the session.
+
+Public tool submissions do not require an account and are always created as pending. Disable public account signups in Supabase if you don’t want visitors creating accounts.
+
+## Your stack and privacy
+
+Your personal stack is stored in your browser using local storage. It is not synced to an account or shared between browsers. Clearing that browser’s site data will remove the saved stack.
+
+## Contributing
+
+Suggestions, bug reports, and contributions are welcome. Open an issue to discuss a change before starting larger work.
 
 ## License
 
-MIT License.
+Prism FL Stack is available under the MIT License.
+
+---
+
+Built by Yoichi — frontend developer and product builder. I like tools that stay out of the way and let you work.

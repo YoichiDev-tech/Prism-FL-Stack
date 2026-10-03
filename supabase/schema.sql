@@ -19,6 +19,7 @@ create table if not exists tools (
   category text not null,
   description text not null,
   link text not null,
+  is_approved boolean not null default false,
   created_at timestamptz not null default now()
 );
 
@@ -26,29 +27,48 @@ create table if not exists tools (
 create index if not exists tools_category_idx on tools (category);
 
 -- Row Level Security
--- v1 has no authentication, so policies below allow public read/write.
--- Tighten these later once auth or an admin role is introduced.
 alter table categories enable row level security;
 alter table tools enable row level security;
 
 -- Categories: public read-only access.
+drop policy if exists "Public can read categories" on categories;
 create policy "Public can read categories"
   on categories for select
   using (true);
 
--- Tools: public read access.
-create policy "Public can read tools"
+drop policy if exists "Public can read tools" on tools;
+drop policy if exists "Public can insert tools" on tools;
+drop policy if exists "Public can delete tools" on tools;
+drop policy if exists "Public can read approved tools" on tools;
+drop policy if exists "Admins can read all tools" on tools;
+drop policy if exists "Public can submit tools for review" on tools;
+drop policy if exists "Admins can update tools" on tools;
+drop policy if exists "Admins can delete tools" on tools;
+
+-- Public users can only read approved tools.
+create policy "Public can read approved tools"
   on tools for select
-  using (true);
+  to anon, authenticated
+  using (is_approved = true);
 
--- Tools: public insert access (needed for the Submit Tool page).
-create policy "Public can insert tools"
+-- Admins can review pending submissions and manage published tools.
+create policy "Admins can read all tools"
+  on tools for select
+  to authenticated
+  using ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
+create policy "Public can submit tools for review"
   on tools for insert
-  with check (true);
+  to anon, authenticated
+  with check (is_approved = false);
 
--- Tools: public delete access (needed for the basic Admin page).
--- Since v1 has no auth, this is intentionally open. Restrict this
--- once an admin role or authentication is added.
-create policy "Public can delete tools"
+create policy "Admins can update tools"
+  on tools for update
+  to authenticated
+  using ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin')
+  with check ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
+create policy "Admins can delete tools"
   on tools for delete
-  using (true);
+  to authenticated
+  using ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');

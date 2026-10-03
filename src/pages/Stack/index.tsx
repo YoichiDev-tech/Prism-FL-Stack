@@ -15,7 +15,7 @@ export default function StackPage() {
         <div className="py-24 text-center text-gray-500">
           <p>Your stack is empty.</p>
           <Link
-            to="/"
+            to="/tools"
             className="mt-4 inline-block rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 hover:border-gray-500"
           >
             Browse tools
@@ -26,6 +26,7 @@ export default function StackPage() {
       {stack.length > 0 && (
         <div className="mt-6 flex flex-col gap-4">
           <button
+            type="button"
             onClick={clearStack}
             className="self-end rounded-md border border-red-300 px-3 py-1.5 text-xs text-red-600 hover:border-red-500"
           >
@@ -39,10 +40,11 @@ export default function StackPage() {
                 className="rounded-xl border border-gray-200 p-4 shadow-sm"
               >
                 <div className="flex items-start justify-between">
-                  <h3 className="font-semibold text-gray-900">{tool.name}</h3>
+                  <h3 className="min-w-0 break-words font-semibold text-gray-900">{tool.name}</h3>
                   <button
+                    type="button"
                     onClick={() => removeFromStack(tool.id)}
-                    className="text-xs text-red-600 hover:text-red-800"
+                    className="flex min-h-11 min-w-11 shrink-0 items-center justify-center px-2 text-xs text-red-600 hover:text-red-800"
                   >
                     Remove
                   </button>

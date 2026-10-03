@@ -64,7 +64,16 @@ export default function About() {
         <section>
           <h2 className="text-2xl font-semibold text-gray-900">Contact</h2>
           <p className="mt-4 text-gray-600 leading-relaxed">
-            Have questions, suggestions, or want to contribute? We'd love to hear from you. Reach out through our GitHub repository or social channels.
+            Have questions, suggestions, or want to contribute?{" "}
+            <a
+              href="https://github.com/YoichiDev-tech/IndieMakerStack/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-700"
+            >
+              Contact us through GitHub
+            </a>
+            .
           </p>
         </section>
       </div>

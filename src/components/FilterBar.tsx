@@ -15,15 +15,15 @@ export default function FilterBar({
   onChange,
 }: FilterBarProps) {
   return (
-    <div className="relative inline-block w-full sm:w-auto">
+    <div className="relative inline-block w-full sm:w-auto sm:shrink-0">
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full sm:w-auto appearance-none rounded-md border border-ink/15 bg-white py-2 pl-3 pr-8 text-sm text-ink transition-colors hover:border-ink/25 focus:border-ink/40 focus:outline-none focus:ring-2 focus:ring-amber/20"
+        className="min-h-11 w-full appearance-none rounded-md border border-ink/15 bg-white py-2 pl-3 pr-8 text-base text-ink transition-colors hover:border-ink/25 focus:border-ink/40 focus:outline-none focus:ring-2 focus:ring-amber/20 sm:w-auto sm:text-sm"
       >
         <option value="all">All categories</option>
         {categories.map((cat) => (
-          <option key={cat.id} value={cat.id}>
+          <option key={cat.id} value={cat.name}>
             {cat.name}
           </option>
         ))}

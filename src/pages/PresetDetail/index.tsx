@@ -41,6 +41,7 @@ export default function PresetDetailPage() {
         <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4">
           {!allToolsInStack ? (
             <button
+              type="button"
               onClick={handleAddAll}
               className="w-full rounded-lg bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700 sm:w-auto"
             >

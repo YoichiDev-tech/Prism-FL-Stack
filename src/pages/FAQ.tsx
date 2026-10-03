@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function FAQ() {
   const faqs = [
     {
@@ -82,15 +84,17 @@ export default function FAQ() {
           Can't find the answer you're looking for? Feel free to reach out or submit a new tool suggestion.
         </p>
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:gap-4">
-          <a
-            href="/submit"
-            className="inline-block rounded-lg bg-blue-600 px-4 py-2 text-center font-medium text-white transition-colors hover:bg-blue-700"
+          <Link
+            to="/submit"
+            className="inline-flex min-h-11 items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-center font-medium text-white transition-colors hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
           >
             Submit a Tool
-          </a>
+          </Link>
           <a
-            href="/about"
-            className="inline-block rounded-lg border border-gray-300 px-4 py-2 text-center font-medium text-gray-700 transition-colors hover:border-gray-400 hover:bg-gray-50"
+            href="https://github.com/YoichiDev-tech/IndieMakerStack/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 px-4 py-2 text-center font-medium text-gray-700 transition-colors hover:border-gray-400 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
           >
             Contact Us
           </a>

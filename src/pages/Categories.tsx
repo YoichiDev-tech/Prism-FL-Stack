@@ -26,7 +26,7 @@ export default function Categories() {
           </p>
         )}
         {!loading && !error && categories.length > 0 && (
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 min-[380px]:grid-cols-2 sm:grid-cols-3 sm:gap-4">
             {categories.map((category) => (
               <CategoryCard key={category.id} category={category} />
             ))}

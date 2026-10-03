@@ -5,15 +5,23 @@ import App from "./App";
 import "./styles/index.css";
 import { StackProvider } from "./context/StackContext";
 import { ThemeProvider } from "./context/ThemeContext";
+import { AuthProvider } from "./context/AuthContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider>
-      <StackProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </StackProvider>
+      <AuthProvider>
+        <StackProvider>
+          <BrowserRouter
+            future={{
+              v7_startTransition: true,
+              v7_relativeSplatPath: true,
+            }}
+          >
+            <App />
+          </BrowserRouter>
+        </StackProvider>
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

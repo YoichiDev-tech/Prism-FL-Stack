@@ -18,7 +18,7 @@ export default function SearchBar({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Search tools..."
-        className="w-full rounded-md border border-ink/15 bg-white py-2 pl-9 pr-3 text-sm text-ink placeholder-ink/35 transition-colors hover:border-ink/25 focus:border-ink/40 focus:outline-none focus:ring-2 focus:ring-amber/20"
+        className="min-h-11 w-full rounded-md border border-ink/15 bg-white py-2 pl-9 pr-3 text-base text-ink placeholder-ink/35 transition-colors hover:border-ink/25 focus:border-ink/40 focus:outline-none focus:ring-2 focus:ring-amber/20 sm:text-sm"
       />
     </div>
   );

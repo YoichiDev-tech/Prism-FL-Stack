@@ -4,7 +4,7 @@ import { Logo } from "./Logo";
 import { useTheme } from "../context/ThemeContext";
 
 const linkClasses = ({ isActive }: { isActive: boolean }) =>
-  `text-sm font-medium transition-colors ${
+  `inline-flex min-h-11 items-center rounded-md px-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber ${
     isActive ? "text-ink" : "text-ink/50 hover:text-ink"
   }`;
 
@@ -14,10 +14,10 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-ink/10 bg-paper/80 backdrop-blur-md">
-      <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-y-3 px-4 py-4">
+      <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-y-3 px-4 py-3 sm:px-6 sm:py-4">
         <NavLink to="/" className="flex items-center gap-2.5">
           <Logo />
-          <span className="font-display text-base font-semibold tracking-tight text-ink">
+          <span className="font-display text-sm font-semibold tracking-tight text-ink sm:text-base">
             Prism FL Stack
           </span>
         </NavLink>
@@ -25,7 +25,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="rounded-lg p-2 text-ink/50 transition-colors hover:text-ink"
+            className="flex h-11 w-11 items-center justify-center rounded-lg text-ink/60 transition-colors hover:bg-ink/5 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber"
             aria-label="Toggle theme"
           >
             {theme === "light" ? (
@@ -41,7 +41,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="rounded-lg p-2 text-ink/70 transition-colors hover:bg-ink/5 hover:text-ink xl:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-lg text-ink/70 transition-colors hover:bg-ink/5 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber xl:hidden"
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
             aria-controls="primary-navigation"
@@ -60,7 +60,7 @@ export default function Navbar() {
         <nav
           id="primary-navigation"
           onClick={() => setMenuOpen(false)}
-          className={`${menuOpen ? "grid" : "hidden"} basis-full grid-cols-2 gap-x-4 gap-y-3 border-t border-ink/10 pt-3 sm:grid-cols-3 xl:flex xl:basis-auto xl:items-center xl:gap-4 xl:border-0 xl:pt-0`}
+          className={`${menuOpen ? "grid" : "hidden"} basis-full grid-cols-2 gap-x-3 gap-y-1 border-t border-ink/10 pt-3 sm:grid-cols-3 xl:flex xl:basis-auto xl:items-center xl:gap-4 xl:border-0 xl:pt-0`}
         >
           <NavLink to="/tools" end className={linkClasses}>
             Tools

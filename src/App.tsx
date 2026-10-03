@@ -20,9 +20,9 @@ import StackExportPage from "./pages/StackExport";
 // This keeps the shell consistent across the whole app.
 export default function App() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen min-h-dvh flex-col">
       <Navbar />
-      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
+      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6 sm:px-6 sm:py-8">
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/tools" element={<Home />} />
