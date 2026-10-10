@@ -8,7 +8,7 @@ export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
 
 if (!isSupabaseConfigured) {
   console.warn(
-    "Veylora is running without Supabase configuration. Database and admin features will not work until VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are set."
+    "Tool Index is running without Supabase configuration. Database and admin features will not work until VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are set."
   );
 }
 
