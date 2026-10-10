@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { isSupabaseConfigured, supabase } from "../lib/supabaseClient";
 import { NewTool, Tool } from "../types";
+import { tools as localTools } from "../data/tools";
 
 interface UseToolsResult {
   tools: Tool[];
@@ -24,8 +25,9 @@ export function useTools({ enabled = true }: { enabled?: boolean } = {}): UseToo
 
   const fetchTools = useCallback(async () => {
     if (!isSupabaseConfigured) {
-      setTools([]);
-      setError("Directory data is unavailable until Supabase is configured.");
+      // Keep the public portfolio demo usable without a configured backend.
+      setTools(localTools.filter((tool) => tool.is_approved !== false));
+      setError(null);
       setLoading(false);
       return;
     }
