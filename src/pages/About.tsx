@@ -50,14 +50,14 @@ export default function About() {
         <section>
           <h2 className="text-2xl font-semibold text-gray-900">The Team</h2>
           <p className="mt-4 text-gray-600 leading-relaxed">
-            Prism FL Stack is built by Yoichi, a frontend developer and product builder who believes tools should stay out of the way and let you work. The project is continuously evolving based on feedback from the community.
+            Tool Index is built by Yoichi, a frontend developer and product builder who believes tools should stay out of the way and let you work. The project is continuously evolving based on feedback from the community.
           </p>
         </section>
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-900">Open Source</h2>
           <p className="mt-4 text-gray-600 leading-relaxed">
-            Prism FL Stack is open source and built with modern web technologies. We welcome contributions, bug reports, and suggestions from the community.
+            Tool Index is open source and built with modern web technologies. We welcome contributions, bug reports, and suggestions from the community.
           </p>
         </section>
 
