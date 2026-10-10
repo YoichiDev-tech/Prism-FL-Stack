@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabaseClient";
+import { isSupabaseConfigured, supabase } from "../lib/supabaseClient";
 import { Category } from "../types";
 
 interface UseCategoriesResult {
@@ -19,6 +19,15 @@ export function useCategories(): UseCategoriesResult {
     let isMounted = true;
 
     async function fetchCategories() {
+      if (!isSupabaseConfigured) {
+        if (isMounted) {
+          setCategories([]);
+          setError("Categories are unavailable until Supabase is configured.");
+          setLoading(false);
+        }
+        return;
+      }
+
       setLoading(true);
       setError(null);
 
