@@ -18,7 +18,7 @@ export default function Navbar() {
         <NavLink to="/" className="flex items-center gap-2.5">
           <Logo />
           <span className="font-display text-sm font-semibold tracking-tight text-ink sm:text-base">
-            Prism FL Stack
+            Veylora
           </span>
         </NavLink>
         <div className="flex items-center gap-2">
