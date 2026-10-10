@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { supabase } from "../lib/supabaseClient";
+import { isSupabaseConfigured, supabase } from "../lib/supabaseClient";
 import { NewTool, Tool } from "../types";
 
 interface UseToolsResult {
@@ -23,6 +23,13 @@ export function useTools({ enabled = true }: { enabled?: boolean } = {}): UseToo
   const [error, setError] = useState<string | null>(null);
 
   const fetchTools = useCallback(async () => {
+    if (!isSupabaseConfigured) {
+      setTools([]);
+      setError("Directory data is unavailable until Supabase is configured.");
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
@@ -63,10 +70,39 @@ export function useTools({ enabled = true }: { enabled?: boolean } = {}): UseToo
   // Inserts a new tool and refreshes the local list on success.
   const addTool = useCallback(
     async (tool: NewTool) => {
+      if (!isSupabaseConfigured) {
+        return { error: "Submissions are unavailable until Supabase is configured." };
+      }
+
+      const normalizedTool: NewTool = {
+        ...tool,
+        name: tool.name.trim(),
+        category: tool.category.trim(),
+        description: tool.description.trim(),
+        link: tool.link.trim(),
+      };
+      if (!normalizedTool.name || normalizedTool.name.length > 100) {
+        return { error: "Tool name must be between 1 and 100 characters." };
+      }
+      if (!normalizedTool.category || normalizedTool.category.length > 80) {
+        return { error: "Category must be between 1 and 80 characters." };
+      }
+      if (!normalizedTool.description || normalizedTool.description.length > 1200) {
+        return { error: "Description must be between 1 and 1,200 characters." };
+      }
+      try {
+        const parsedLink = new URL(normalizedTool.link);
+        if (!["http:", "https:"].includes(parsedLink.protocol) || !parsedLink.hostname || normalizedTool.link.length > 2048) {
+          return { error: "Enter a valid HTTP or HTTPS URL (maximum 2,048 characters)." };
+        }
+      } catch {
+        return { error: "Enter a valid HTTP or HTTPS URL." };
+      }
+
       try {
         const { error: insertError } = await supabase
           .from("tools")
-          .insert([{ ...tool, is_approved: false }]);
+          .insert([{ ...normalizedTool, is_approved: false }]);
 
         return { error: insertError?.message ?? null };
       } catch (insertError) {
@@ -83,6 +119,7 @@ export function useTools({ enabled = true }: { enabled?: boolean } = {}): UseToo
 
   const updateToolApproval = useCallback(
     async (id: string, isApproved: boolean) => {
+      if (!isSupabaseConfigured) return { error: "Supabase is not configured." };
       try {
         const { data, error: updateError } = await supabase
           .from("tools")
@@ -113,6 +150,7 @@ export function useTools({ enabled = true }: { enabled?: boolean } = {}): UseToo
   // Deletes a tool by id and refreshes the local list on success.
   const deleteTool = useCallback(
     async (id: string) => {
+      if (!isSupabaseConfigured) return { error: "Supabase is not configured." };
       try {
         const { data, error: deleteError } = await supabase
           .from("tools")
