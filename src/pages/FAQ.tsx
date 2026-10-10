@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 export default function FAQ() {
   const faqs = [
     {
-      question: "What is Prism FL Stack?",
-      answer: "Prism FL Stack is a curated directory of tools and resources for founders, indie makers, and developers. It helps you discover, organize, and share the tools you use to build products."
+      question: "What is Tool Index?",
+      answer: "Tool Index is a curated directory of tools and resources for founders, indie makers, and developers. It helps you discover, organize, and share the tools you use to build products."
     },
     {
       question: "How do I add tools to my stack?",
@@ -23,8 +23,8 @@ export default function FAQ() {
       answer: "Click the 'Submit' link in the navigation and fill out the form with the tool's name, category, description, and link. Submitted tools are reviewed before being added to the directory."
     },
     {
-      question: "Is Prism FL Stack free?",
-      answer: "Yes, Prism FL Stack is completely free to use. We believe in providing value to the community without barriers."
+      question: "Is Tool Index free?",
+      answer: "Yes, Tool Index is completely free to use. We believe in providing value to the community without barriers."
     },
     {
       question: "How are tools curated?",
@@ -48,7 +48,7 @@ export default function FAQ() {
     <div>
       <h1 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h1>
       <p className="mt-4 text-lg text-gray-600">
-        Everything you need to know about Prism FL Stack.
+        Everything you need to know about Tool Index.
       </p>
 
       <div className="mt-12 space-y-4">
