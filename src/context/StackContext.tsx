@@ -9,7 +9,7 @@ interface StackContextValue {
 }
 
 const StackContext = createContext<StackContextValue | undefined>(undefined);
-const STORAGE_KEY = "veylora-stack";
+const STORAGE_KEY = "tool-index-stack";
 const LEGACY_KEYS = ["prism-fl-stack", "prismstack"];
 
 function readStoredStack(): Tool[] {
