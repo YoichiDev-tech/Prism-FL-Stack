@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { isSupabaseConfigured, supabase } from "../lib/supabaseClient";
 import { Category } from "../types";
+import { tools as localTools } from "../data/tools";
 
 interface UseCategoriesResult {
   categories: Category[];
@@ -21,8 +22,12 @@ export function useCategories(): UseCategoriesResult {
     async function fetchCategories() {
       if (!isSupabaseConfigured) {
         if (isMounted) {
-          setCategories([]);
-          setError("Categories are unavailable until Supabase is configured.");
+          const names = [...new Set(localTools.map((tool) => tool.category.trim()).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+          setCategories(names.map((name) => ({
+            id: name.toLowerCase().replace(/\\s+/g, "-"),
+            name,
+          })));
+          setError(null);
           setLoading(false);
         }
         return;
