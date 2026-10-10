@@ -91,7 +91,7 @@ export function useTools({ enabled = true }: { enabled?: boolean } = {}): UseToo
         return { error: "Description must be between 1 and 1,200 characters." };
       }
       try {
-        const parsedLink = new URL(normalizedTool.link);
+        const parsedLink = new globalThis.URL(normalizedTool.link);
         if (!["http:", "https:"].includes(parsedLink.protocol) || !parsedLink.hostname || normalizedTool.link.length > 2048) {
           return { error: "Enter a valid HTTP or HTTPS URL (maximum 2,048 characters)." };
         }
