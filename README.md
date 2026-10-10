@@ -1,8 +1,8 @@
-# Veylora
+# Tool Index
 
 A curated toolkit directory for founders, indie makers, and developers. Discover useful software, collect tools into a personal stack, explore curated presets, and export your collection when you need it.
 
-> **Case study status:** Veylora is a PrismWave Studio portfolio project. The name is a working candidate and has not been cleared for commercial trademark use. Do not treat the project as a live third-party service.
+> **Case study status:** Tool Index is a PrismWave Studio portfolio project. The final product name is intentionally undecided pending trademark and domain clearance. Do not treat the project as a live third-party service.
 
 ## Features
 
@@ -84,7 +84,7 @@ Personal stacks are stored in the current browser and are not synced to an accou
 - [ ] Run `npm ci`, `npm run lint`, and `npm run build` in CI.
 - [ ] Test keyboard navigation, mobile layouts, empty/error/loading states, and exported files.
 - [ ] Add a privacy notice and confirm all example tool descriptions, links, and claims are accurate.
-- [ ] Confirm trademark, domain, and social-handle availability before adopting the Veylora name publicly.
+- [ ] Confirm trademark, domain, and social-handle availability before adopting the Tool Index name publicly.
 
 ## License
 
