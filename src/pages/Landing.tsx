@@ -14,7 +14,7 @@ export default function Landing() {
           <span className="text-blue-600"> Stack</span>
         </h1>
         <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-gray-600 sm:text-xl">
-          A curated directory of 100+ tools for founders, indie makers, and developers.
+          A curated directory of useful tools for founders, indie makers, and developers.
           Build your perfect stack and stay productive.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
@@ -37,7 +37,7 @@ export default function Landing() {
       <section className="py-16 bg-gray-50">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center text-2xl font-bold text-gray-900 sm:text-3xl">
-            Why Prism FL Stack?
+            Why Tool Index?
           </h2>
           <p className="mt-4 text-center text-gray-600">
             Everything you need to discover, organize, and share your tools.

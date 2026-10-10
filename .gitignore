@@ -1,8 +1,7 @@
-node_modules
-dist
+node_modules/
+dist/
 .env
+.env.*
+!.env.example
 .DS_Store
-
-.env
-.env.example
-.vercel
+.vercel/

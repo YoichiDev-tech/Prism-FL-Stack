@@ -77,6 +77,7 @@ export default function SubmitTool() {
           <input
             type="text"
             id="tool-name"
+            maxLength={100}
             required
             value={form.name}
             onChange={(e) => updateField("name", e.target.value)}
@@ -91,6 +92,7 @@ export default function SubmitTool() {
           <input
             type="text"
             id="tool-category"
+            maxLength={80}
             required
             list="category-options"
             value={form.category}
@@ -112,6 +114,7 @@ export default function SubmitTool() {
           <textarea
             required
             id="tool-description"
+            maxLength={1200}
             rows={4}
             value={form.description}
             onChange={(e) => updateField("description", e.target.value)}
@@ -126,6 +129,7 @@ export default function SubmitTool() {
           <input
             type="url"
             id="tool-link"
+            maxLength={2048}
             required
             value={form.link}
             onChange={(e) => updateField("link", e.target.value)}
