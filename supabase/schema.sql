@@ -20,6 +20,10 @@ create table if not exists tools (
   description text not null,
   link text not null,
   is_approved boolean not null default false,
+  constraint tools_name_length_check check (char_length(btrim(name)) between 1 and 100),
+  constraint tools_category_length_check check (char_length(btrim(category)) between 1 and 80),
+  constraint tools_description_length_check check (char_length(btrim(description)) between 1 and 1200),
+  constraint tools_link_length_check check (char_length(btrim(link)) between 8 and 2048 and link ~* '^https?://'),
   created_at timestamptz not null default now()
 );
 
