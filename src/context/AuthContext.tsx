@@ -7,7 +7,7 @@ import {
   useState,
 } from "react";
 import { User } from "@supabase/supabase-js";
-import { supabase } from "../lib/supabaseClient";
+import { isSupabaseConfigured, supabase } from "../lib/supabaseClient";
 
 interface AuthContextValue {
   user: User | null;
@@ -58,6 +58,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signIn = useCallback(
     async (email: string, password: string) => {
+      if (!isSupabaseConfigured) {
+        return { error: "Admin sign-in is unavailable until Supabase is configured." };
+      }
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -68,6 +71,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 
   const signOut = useCallback(async () => {
+    if (!isSupabaseConfigured) return { error: "Supabase is not configured." };
     const { error } = await supabase.auth.signOut();
     return { error: error?.message ?? null };
   }, []);
