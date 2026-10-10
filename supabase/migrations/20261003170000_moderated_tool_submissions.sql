@@ -18,6 +18,29 @@ $$;
 alter table public.tools
   alter column is_approved set default false;
 
+-- Validate new submissions at the database boundary, even if clients bypass the UI.
+-- NOT VALID avoids blocking deployment on legacy rows; new/changed rows are checked immediately.
+do $
+begin
+  if not exists (select 1 from pg_constraint where conname = 'tools_name_length_check' and conrelid = 'public.tools'::regclass) then
+    alter table public.tools add constraint tools_name_length_check
+      check (char_length(btrim(name)) between 1 and 100) not valid;
+  end if;
+  if not exists (select 1 from pg_constraint where conname = 'tools_category_length_check' and conrelid = 'public.tools'::regclass) then
+    alter table public.tools add constraint tools_category_length_check
+      check (char_length(btrim(category)) between 1 and 80) not valid;
+  end if;
+  if not exists (select 1 from pg_constraint where conname = 'tools_description_length_check' and conrelid = 'public.tools'::regclass) then
+    alter table public.tools add constraint tools_description_length_check
+      check (char_length(btrim(description)) between 1 and 1200) not valid;
+  end if;
+  if not exists (select 1 from pg_constraint where conname = 'tools_link_length_check' and conrelid = 'public.tools'::regclass) then
+    alter table public.tools add constraint tools_link_length_check
+      check (char_length(btrim(link)) between 8 and 2048 and link ~* '^https?://') not valid;
+  end if;
+end
+$;
+
 alter table public.tools enable row level security;
 
 drop policy if exists "Public can read tools" on public.tools;
