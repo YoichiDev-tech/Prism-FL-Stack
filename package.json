@@ -1,5 +1,5 @@
 {
-  "name": "prism-fl-stack",
+  "name": "veylora",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -30,5 +30,6 @@
   },
   "allowScripts": {
     "esbuild@0.21.5": true
-  }
+  },
+  "description": "Curated software discovery and personal toolkit builder."
 }
